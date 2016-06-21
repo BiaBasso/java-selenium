@@ -6,32 +6,49 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class UsuariosSystemTest {
-	
+
 	@Test
 	public void deveAdicionarUmUsuario() {
-		WebDriver driver = new FirefoxDriver();
-		
+		WebDriver driver = new ChromeDriver();
+
 		driver.get("http://localhost:8080/usuarios/new");
-		
+
 		WebElement nome = driver.findElement(By.name("usuario.nome"));
 		WebElement email = driver.findElement(By.name("usuario.email"));
-		
+
 		nome.sendKeys("Ronaldo Luiz de Albuquerque");
 		email.sendKeys("ronaldo2009@terra.com.br");
-		
+
 		WebElement botaoSalvar = driver.findElement(By.id("btnSalvar"));
 		botaoSalvar.click();
-		
-		//Usando JUnit para trazer os dados de nome e email quando for adicionado
+
+		// Usando JUnit para trazer os dados de nome e email quando for
+		// adicionado
 		boolean achouNome = driver.getPageSource().contains("Ronaldo Luiz de Albuquerque");
 		boolean achouEmail = driver.getPageSource().contains("ronaldo2009@terra.com.br");
-		
+
 		assertTrue(achouNome);
 		assertTrue(achouEmail);
-		
+
 		driver.close();
+	}
+
+	@Test
+	public void naoDeveAdicionarUmUsuarioSemNome() {
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://localhost:8080/usuarios/new");
+
+		WebElement email = driver.findElement(By.name("usuario.email"));
+
+		email.sendKeys("ronaldo2009@terra.com.br");
+		email.submit();
+
+		assertTrue(driver.getPageSource().contains("Nome obrigatorio!"));
+
+		driver.close();
+
 	}
 }
