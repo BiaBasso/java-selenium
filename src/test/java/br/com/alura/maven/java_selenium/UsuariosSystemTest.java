@@ -36,19 +36,19 @@ public class UsuariosSystemTest {
 		driver.close();
 	}
 
-	@Test
-	public void naoDeveAdicionarUmUsuarioSemNome() {
-		WebDriver driver = new ChromeDriver();
-		driver.get("http://localhost:8080/usuarios/new");
-
-		WebElement email = driver.findElement(By.name("usuario.email"));
-
-		email.sendKeys("ronaldo2009@terra.com.br");
-		email.submit();
-
-		assertTrue(driver.getPageSource().contains("Nome obrigatorio!"));
-
-		driver.close();
-
-	}
+//	@Test
+//	public void naoDeveAdicionarUmUsuarioSemNome() {
+//		WebDriver driver = new ChromeDriver();
+//		driver.get("http://localhost:8080/usuarios/new");
+//
+//		WebElement email = driver.findElement(By.name("usuario.email"));
+//
+//		email.sendKeys("ronaldo2009@terra.com.br");
+//		email.submit();
+//
+//		assertTrue(driver.getPageSource().contains("Nome obrigatorio!"));
+//
+//		driver.close();
+//
+//	}
 }
