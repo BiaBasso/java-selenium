@@ -1,6 +1,8 @@
 package br.com.alura.maven.java_selenium;
 
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class UsuariosSystemTest {
 	
-	public static void main(String[] args) {
+	@Test
+	public void deveAdicionarUmUsuario() {
 		WebDriver driver = new FirefoxDriver();
 		
 		driver.get("http://localhost:8080/usuarios/new");
@@ -27,5 +30,8 @@ public class UsuariosSystemTest {
 		boolean achouEmail = driver.getPageSource().contains("ronaldo2009@terra.com.br");
 		
 		assertTrue(achouNome);
+		assertTrue(achouEmail);
+		
+		driver.close();
 	}
 }
