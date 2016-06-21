@@ -1,5 +1,6 @@
 package br.com.alura.maven.java_selenium;
 
+import static org.junit.Assert.assertTrue;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,5 +21,11 @@ public class UsuariosSystemTest {
 		
 		WebElement botaoSalvar = driver.findElement(By.id("btnSalvar"));
 		botaoSalvar.click();
+		
+		//Usando JUnit para trazer os dados de nome e email quando for adicionado
+		boolean achouNome = driver.getPageSource().contains("Ronaldo Luiz de Albuquerque");
+		boolean achouEmail = driver.getPageSource().contains("ronaldo2009@terra.com.br");
+		
+		assertTrue(achouNome);
 	}
 }
