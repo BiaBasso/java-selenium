@@ -12,6 +12,8 @@ public class UsuariosSystemTest {
 
 	@Test
 	public void deveAdicionarUmUsuario() {
+
+		System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
 		WebDriver driver = new ChromeDriver();
 
 		driver.get("http://localhost:8080/usuarios/new");
@@ -27,7 +29,7 @@ public class UsuariosSystemTest {
 
 		// Usando JUnit para trazer os dados de nome e email quando for
 		// adicionado
-		boolean achouNome = driver.getPageSource().contains("Ronaldo Luiz de Albuquerque");
+		boolean achouNome = driver.getPageSource().contains("Ronaldo Luiz de Alburquerque");
 		boolean achouEmail = driver.getPageSource().contains("ronaldo2009@terra.com.br");
 
 		assertTrue(achouNome);
@@ -36,19 +38,19 @@ public class UsuariosSystemTest {
 		driver.close();
 	}
 
-//	@Test
-//	public void naoDeveAdicionarUmUsuarioSemNome() {
-//		WebDriver driver = new ChromeDriver();
-//		driver.get("http://localhost:8080/usuarios/new");
-//
-//		WebElement email = driver.findElement(By.name("usuario.email"));
-//
-//		email.sendKeys("ronaldo2009@terra.com.br");
-//		email.submit();
-//
-//		assertTrue(driver.getPageSource().contains("Nome obrigatorio!"));
-//
-//		driver.close();
-//
-//	}
+	// @Test
+	// public void naoDeveAdicionarUmUsuarioSemNome() {
+	// WebDriver driver = new ChromeDriver();
+	// driver.get("http://localhost:8080/usuarios/new");
+	//
+	// WebElement email = driver.findElement(By.name("usuario.email"));
+	//
+	// email.sendKeys("ronaldo2009@terra.com.br");
+	// email.submit();
+	//
+	// assertTrue(driver.getPageSource().contains("Nome obrigatorio!"));
+	//
+	// driver.close();
+	//
+	// }
 }
