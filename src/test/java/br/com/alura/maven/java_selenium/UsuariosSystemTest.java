@@ -1,6 +1,5 @@
 package br.com.alura.maven.java_selenium;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
@@ -32,16 +31,16 @@ public class UsuariosSystemTest {
 
 	}
 	
-	@Test
-	public void deveDeletarUmUsuario(){
-		
-		usuarios.novo().cadastra("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br");
-        assertTrue(usuarios.existeNaListagem ("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
-
-        usuarios.deletaUsuarioNaPosicao(1);
-
-        assertFalse(usuarios.existeNaListagem("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
-	}
+//	@Test
+//	public void deveDeletarUmUsuario(){
+//		
+//		usuarios.novo().cadastra("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br");
+//        assertTrue(usuarios.existeNaListagem ("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
+//
+//        usuarios.deletaUsuarioNaPosicao(1);
+//
+//        assertFalse(usuarios.existeNaListagem("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
+//	}
 
 	// Obs: Para cadastro sem nome de usuário.
 	// @Test
