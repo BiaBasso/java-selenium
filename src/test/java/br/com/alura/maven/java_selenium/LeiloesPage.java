@@ -1,5 +1,7 @@
 package br.com.alura.maven.java_selenium;
 
+import java.awt.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -27,5 +29,13 @@ public class LeiloesPage {
 			   driver.getPageSource().contains(String.valueOf(valor)) && 
 			   driver.getPageSource().contains(usado ? "Sim" : "Não");
 
+	}
+
+	public DetalhesDoLeilaoPage detalhes(int posicao) {
+		List<WebElement> elementos = driver.findElements(By.linkText("exibir"));
+		elementos.get(posicao-1).click();
+		
+		return new DetalhesDoLeilaoPage(driver);		
+		
 	}
 }
