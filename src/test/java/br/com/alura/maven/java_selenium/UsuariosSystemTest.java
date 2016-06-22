@@ -1,5 +1,6 @@
 package br.com.alura.maven.java_selenium;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
@@ -29,32 +30,17 @@ public class UsuariosSystemTest {
 
 		assertTrue(usuarios.existeNaListagem("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
 
-		// System.setProperty("webdriver.chrome.driver",
-		// "/opt/google/chrome/chromedriver");
-		// WebDriver driver = new ChromeDriver();
-		//
-		// driver.get("http://localhost:8080/usuarios");
-		// driver.findElement(By.linkText("Novo Usuário")).click();
-		//
-		// WebElement nome = driver.findElement(By.name("usuario.nome"));
-		// WebElement email = driver.findElement(By.name("usuario.email"));
-		//
-		// nome.sendKeys("Ronaldo Luiz de Albuquerque");
-		// email.sendKeys("ronaldo2009@terra.com.br");
-		//
-		// WebElement botaoSalvar = driver.findElement(By.id("btnSalvar"));
-		// botaoSalvar.click();
-		//
-		// // Usando JUnit para trazer os dados de nome e email quando for
-		// // adicionado
-		// boolean achouNome = driver.getPageSource().contains("Ronaldo Luiz de
-		// Alburquerque");
-		// boolean achouEmail =
-		// driver.getPageSource().contains("ronaldo2009@terra.com.br");
-		// 
-		// assertTrue(achouNome);
-		// assertTrue(achouEmail);
+	}
+	
+	@Test
+	public void deveDeletarUmUsuario(){
+		
+		usuarios.novo().cadastra("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br");
+        assertTrue(usuarios.existeNaListagem ("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
 
+        usuarios.deletaUsuarioNaPosicao(1);
+
+        assertFalse(usuarios.existeNaListagem("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
 	}
 
 	// Obs: Para cadastro sem nome de usuário.
