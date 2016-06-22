@@ -5,10 +5,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.PUBLIC_MEMBER;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class UsuariosSystemTest {
@@ -25,31 +21,38 @@ public class UsuariosSystemTest {
 
 	@Test
 	public void deveAdicionarUmUsuario() {
-
-//		System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
-//		WebDriver driver = new ChromeDriver();
-
-		driver.get("http://localhost:8080/usuarios");
-		driver.findElement(By.linkText("Novo Usuário")).click();
-
-		WebElement nome = driver.findElement(By.name("usuario.nome"));
-		WebElement email = driver.findElement(By.name("usuario.email"));
-
-		nome.sendKeys("Ronaldo Luiz de Albuquerque");
-		email.sendKeys("ronaldo2009@terra.com.br");
-
-		WebElement botaoSalvar = driver.findElement(By.id("btnSalvar"));
-		botaoSalvar.click();
-
-		// Usando JUnit para trazer os dados de nome e email quando for
-		// adicionado
-		boolean achouNome = driver.getPageSource().contains("Ronaldo Luiz de Alburquerque");
-		boolean achouEmail = driver.getPageSource().contains("ronaldo2009@terra.com.br");
-
-		assertTrue(achouNome);
-		assertTrue(achouEmail);
-
 		
+		UsuariosPage usuarios = new UsuariosPage(driver); 
+		usuarios.novo().cadastra("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br");
+
+		assertTrue(usuarios.existeNaListagem("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
+
+		// System.setProperty("webdriver.chrome.driver",
+		// "/opt/google/chrome/chromedriver");
+		// WebDriver driver = new ChromeDriver();
+		//
+		// driver.get("http://localhost:8080/usuarios");
+		// driver.findElement(By.linkText("Novo Usuário")).click();
+		//
+		// WebElement nome = driver.findElement(By.name("usuario.nome"));
+		// WebElement email = driver.findElement(By.name("usuario.email"));
+		//
+		// nome.sendKeys("Ronaldo Luiz de Albuquerque");
+		// email.sendKeys("ronaldo2009@terra.com.br");
+		//
+		// WebElement botaoSalvar = driver.findElement(By.id("btnSalvar"));
+		// botaoSalvar.click();
+		//
+		// // Usando JUnit para trazer os dados de nome e email quando for
+		// // adicionado
+		// boolean achouNome = driver.getPageSource().contains("Ronaldo Luiz de
+		// Alburquerque");
+		// boolean achouEmail =
+		// driver.getPageSource().contains("ronaldo2009@terra.com.br");
+		// 
+		// assertTrue(achouNome);
+		// assertTrue(achouEmail);
+
 	}
 
 	// Obs: Para cadastro sem nome de usuário.
@@ -91,7 +94,7 @@ public class UsuariosSystemTest {
 	// driver.close();
 	//
 	// }
-	
+
 	@After
 	public void finaliza() {
 		driver.close();
