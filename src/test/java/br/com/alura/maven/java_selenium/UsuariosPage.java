@@ -16,8 +16,9 @@ public class UsuariosPage {
 		
 	}
 	
-	public void novo() {
+	public NovoUsuarioPage novo() {
 		driver.findElement(By.linkText("Novo Usuário")).click();
+		return new NovoUsuarioPage(driver);
 	}
 	
 	public boolean existeNaListagem(String nome, String email) {
