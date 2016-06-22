@@ -2,6 +2,7 @@ package br.com.alura.maven.java_selenium;
 
 import static org.junit.Assert.assertTrue;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -33,5 +34,8 @@ public class LeiloesSystemTest {
 		assertTrue(leiloes.existe("Geladeira", 123, "Paulo Henrique", true));
 	}
 	
-	
+	@After
+	public void finaliza(){
+		driver.close();
+	}
 }
