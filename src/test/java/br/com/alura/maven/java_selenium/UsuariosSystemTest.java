@@ -37,22 +37,42 @@ public class UsuariosSystemTest {
 
 		driver.close();
 	}
-
-	@Test
-	public void naoDeveAdicionarUmUsuarioSemNome() {
-		
-		System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
-		WebDriver driver = new ChromeDriver();
-		driver.get("http://localhost:8080/usuarios/new");
-
-		WebElement email = driver.findElement(By.name("usuario.email"));
-
-		email.sendKeys("ronaldo2009@terra.com.br");
-		email.submit();
-
-		assertTrue(driver.getPageSource().contains("Nome obrigatorio!"));
-
-		driver.close();
-
-	}
+	
+//	Obs: Para cadastro sem nome de usuário.
+//	@Test
+//	public void naoDeveAdicionarUmUsuarioSemNome() {
+//
+//		System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
+//		WebDriver driver = new ChromeDriver();
+//		driver.get("http://localhost:8080/usuarios/new");
+//
+//		WebElement email = driver.findElement(By.name("usuario.email"));
+//
+//		email.sendKeys("ronaldo2009@terra.com.br");
+//		email.submit();
+//
+//		assertTrue(driver.getPageSource().contains("Nome obrigatorio!"));
+//
+//		driver.close();
+//
+//	}
+//	
+//	
+//	Obs: Para cadastro sem nome e email.
+//	@Test
+//	public void naoDeveAdicionarUmUsuarioSemNomeOuEmail() {
+//
+//		System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
+//		WebDriver driver = new ChromeDriver();
+//		driver.get("http://localhost:8080/usuarios/new");
+//
+//		WebElement email = driver.findElement(By.name("usuario.email"));
+//		email.submit();
+//
+//		assertTrue(driver.getPageSource().contains("Nome obrigatorio!"));
+//		assertTrue(driver.getPageSource().contains("E-mail obrigatorio!"));
+//
+//		driver.close();
+//
+//	}
 }
