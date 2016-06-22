@@ -19,9 +19,19 @@ public class LeiloesSystemTest {
 		driver = new ChromeDriver();
 		leiloes = new LeiloesPage(driver);
 		
+		driver.get("http://localhost:8080/apenas-teste/limpa");
+		
 		UsuariosPage usuarios = new UsuariosPage(driver);
 		usuarios.visita();
 		usuarios.novo().cadastra("Paulo Henrique", "paulo@henrique.com");
+		usuarios.novo().cadastra("Jose Eduardo", "jose@eduardo.com");
+		
+		LeiloesPage leiloes = new LeiloesPage(driver);
+		leiloes.visita();
+		leiloes.novo().preenche("Geladeira", 100, "Paulo Henrique", false);
+		
+		
+		
 	}
 	
 	@Test
