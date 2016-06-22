@@ -10,19 +10,19 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class UsuariosSystemTest {
 
 	private ChromeDriver driver;
+	private UsuariosPage usuarios;
 
 	@Before
 	public void inicializa() {
 
 		System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
 		driver = new ChromeDriver();
-
+		this.usuarios = new UsuariosPage(driver);
 	}
 
 	@Test
 	public void deveAdicionarUmUsuario() {
 		
-		UsuariosPage usuarios = new UsuariosPage(driver);
 		
 		usuarios.visita();
 		usuarios.novo().cadastra("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br");
