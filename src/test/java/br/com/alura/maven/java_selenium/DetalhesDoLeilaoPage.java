@@ -3,7 +3,9 @@ package br.com.alura.maven.java_selenium;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DetalhesDoLeilaoPage {
 
@@ -25,7 +27,12 @@ public class DetalhesDoLeilaoPage {
 	}
 	
 	public boolean existeLance(String usuario, double valor) {
-		return driver.getPageSource().contains(usuario) &&
-			   driver.getPageSource().contains(String.valueOf(valor));
+		
+		Boolean temUsuario = new WebDriverWait(driver, 10)
+				.until(ExpectedConditions.textToBePresentInElement(By.id("lancesDados"), usuario));
+		
+		if(temUsuario) return driver.getPageSource().contains(String.valueOf(valor));
+		
+		return false;
 	}
 }
