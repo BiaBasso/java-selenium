@@ -22,7 +22,9 @@ public class UsuariosSystemTest {
 	@Test
 	public void deveAdicionarUmUsuario() {
 		
-		UsuariosPage usuarios = new UsuariosPage(driver); 
+		UsuariosPage usuarios = new UsuariosPage(driver);
+		
+		usuarios.visita();
 		usuarios.novo().cadastra("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br");
 
 		assertTrue(usuarios.existeNaListagem("Ronaldo Luiz de Albuquerque", "ronaldo2009@terra.com.br"));
