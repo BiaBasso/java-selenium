@@ -29,7 +29,8 @@ public class UsuariosSystemTest {
 //		System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
 //		WebDriver driver = new ChromeDriver();
 
-		driver.get("http://localhost:8080/usuarios/new");
+		driver.get("http://localhost:8080/usuarios");
+		driver.findElement(By.linkText("Novo Usuário")).click();
 
 		WebElement nome = driver.findElement(By.name("usuario.nome"));
 		WebElement email = driver.findElement(By.name("usuario.email"));
